@@ -1,10 +1,9 @@
 import numpy as np
 from numpy.linalg import inv
-import matplotlib.pyplot as plt
 
 
-def main():
-    # Q1: (A)
+def Q1_A():
+    print("Q1_A:\n")
     a = np.array([[7, 3, 9],
                  [3, 10, 7],
                  [9, 7, 15]])
@@ -14,7 +13,9 @@ def main():
     x = np.linalg.solve(a, b)
     print(x)
 
-    # Q1: (C)
+
+def Q1_C():
+    print("\nQ1_C:\n")
     a = np.array([[2, 1, 2],
                   [1, -2, 1],
                   [1, 2, 3],
@@ -36,7 +37,9 @@ def main():
     r = a@x-b
     print('r= ' + str(r))
 
-    # Q1: (D)
+
+def Q1_D():
+    print("\nQ1_D:\n")
     a = np.array([[2, 1, 2],
                   [1, -2, 1],
                   [1, 2, 3],
@@ -57,7 +60,9 @@ def main():
 
     print(x)
 
-    # Q3: (C)
+
+def Q3_C():
+    print("\nQ3_C:\n")
     a = np.array([[5, 6, 7, 8],
                   [1, 3, 5, 4],
                   [1, 0.5, 4, 2],
@@ -76,6 +81,13 @@ def main():
         d[i][i] = 1 / (np.transpose(a_i) @ a_i) * (np.transpose(a_i) @ b_i)
 
     print(d)
+
+
+def main():
+    Q1_A()
+    Q1_C()
+    Q1_D()
+    Q3_C()
 
 
 if __name__ == "__main__":
