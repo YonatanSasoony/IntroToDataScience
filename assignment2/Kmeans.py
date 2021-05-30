@@ -88,13 +88,21 @@ def kmeans(X):
     return clusters
 
 
+def normalize(x):
+    return [number / 2 for number in x]
+
+
 def main():
     mnist_dataloader = MnistDataloader(training_images_filepath, training_labels_filepath, test_images_filepath, test_labels_filepath)
     (x_train, y_train), (x_test, y_test) = mnist_dataloader.load_data()
-    X = np.empty(100, dtype=object)
-    for i in range(0, 100):
+    trainSampleSize = 10  # len(x_train)
+    X = np.empty(trainSampleSize, dtype=object)
+    for i in range(0, trainSampleSize):
         r = random.randint(1, 60000)
-        X[i] = x_train[r]
+        c = x_train[r]
+        X[i] = normalize(x_train[r])
+        a = normalize(x_train[r])
+        b = 5
     clusters = kmeans(X)
     print(clusters)
 
