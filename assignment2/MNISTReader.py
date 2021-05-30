@@ -39,7 +39,7 @@ class MnistDataloader(object):
             images.append([0] * rows * cols)
         for i in range(size):
             img = np.array(image_data[i * rows * cols:(i + 1) * rows * cols])
-            #  img = img.reshape(28, 28)
+            # img = img.reshape(28, 28)
             meanval = np.mean(img)
             stdval = np.std(img)
             img = (img - meanval) / (stdval + 0.1)
