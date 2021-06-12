@@ -20,7 +20,7 @@ class Kmeans(object):
         converged = False
         while not converged:
             prevCenters = centers
-            centers = calcCenters(self, self.X_train, clusters)
+            centers = calcCenters(self, self.X_train, clusters, init)
             clusters = calcClusters(self.X_train, centers)
             converged = isConverged(prevCenters, centers)
 
@@ -79,7 +79,6 @@ def initRandomCenters(self):
 
 def initKnownCenters(self):
     idx = [55991, 3427, 16837, 30077, 896, 28315, 28400, 562, 4803, 52570]
-    a = self.X_train[idx, :]
     return self.X_train[idx, :]
 
 
@@ -88,13 +87,13 @@ def calcClusters(X, centers):
     return np.array([np.argmin(row) for row in distances])
 
 
-def calcCenters(self, X, clusters):
+def calcCenters(self, X, clusters, init):
     centers = []
     for i in range(self.k):
         # Updating Centroids by taking mean of Cluster it belongs to
         cluster = X[clusters == i]
         if np.size(cluster) == 0:
-            return initCenters(self)
+            return initCenters(self, init)
         center = np.mean(cluster, axis=0)
         centers.append(center)
     return np.vstack(centers)
